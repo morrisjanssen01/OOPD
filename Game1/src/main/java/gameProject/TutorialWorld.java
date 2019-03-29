@@ -34,7 +34,7 @@ public class TutorialWorld extends GameEngine{
 	
 	@Override
 	public void update() {
-		System.out.println(player.jumpDirection);
+		System.out.println(player.getY());
 	}
 	
 	
