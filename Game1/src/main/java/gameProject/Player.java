@@ -28,9 +28,6 @@ public class Player extends SpriteObject{
 		}
 		if(this.getY() <= 250.0) {
 			setDirectionSpeed(180, 10);
-//			if(this.getY() > 350.0) {
-//				setDirectionSpeed(currentDirection, 0);
-//			}
 		}
 		
 	}
