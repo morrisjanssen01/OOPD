@@ -19,14 +19,13 @@ public class HelloMisterPresident extends GameEngine{
 	
 	private Sound backgroundMusic;
 	private TextObject hubText;
-	private static HelloMisterPresident theHubLevel;
 //	private Player player;
 	
-	public static String MEDIA_URL = "Game/src/main/java/gameProject/gameSprites/";
+	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
 
 	public static void main(String[] args) {
 		String[] processingArgs = {"helloMisterPresident.HelloMisterPresident"};
-		theHubLevel = new HelloMisterPresident();
+		HelloMisterPresident theHubLevel = new HelloMisterPresident();
 		
 		PApplet.runSketch(processingArgs, theHubLevel);
 	}
@@ -34,10 +33,10 @@ public class HelloMisterPresident extends GameEngine{
 	@Override
 	public void setupGame() {
 		
-		int worldWidth = 1204;
-		int worldHeight = 903;
+		int worldWidth = 1024;
+		int worldHeight = 1024;
 		
-		initializeSound();
+//		initializeSound();
 		initializeTileMap();
 		
 //		createObjects();
@@ -63,10 +62,10 @@ public class HelloMisterPresident extends GameEngine{
 //		view.setBackground(loadImage(MEDIA_URL.concat("background-elements-redux/Backgrounds/backgroundCastles.png")));
 //	}
 	
-	private void initializeSound() {
-		backgroundMusic = new Sound(theHubLevel, MEDIA_URL.concat("backgroundMusic.mp3"));
-		backgroundMusic.loop(-1);
-	}
+//	private void initializeSound() {
+//		backgroundMusic = new Sound(this, MEDIA_URL.concat("backgroundMusic.mp3"));
+//		backgroundMusic.loop(-1);
+//	}
 	
 //	private void createObjects() {
 //		player = new Player(this);
@@ -74,9 +73,9 @@ public class HelloMisterPresident extends GameEngine{
 //	}
 	
 	private void initializeTileMap() {
-		Sprite topGroundSprite = new Sprite(MEDIA_URL.concat("simplifiedPlatformer/PNG/Tiles/platformPack_tile001.png"));
-		Sprite bottomGroundSprite = new Sprite(MEDIA_URL.concat("simplifiedPlatformer/PNG/Tiles/platformPack_tile004.png"));
-		Sprite platformSprite = new Sprite(MEDIA_URL.concat("simplifiedPlatformer/PNG/Tiles/platform"));
+		Sprite topGroundSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile001.png"));
+		Sprite bottomGroundSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile004.png"));
+		Sprite platformSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile034.png"));
 		TileType<topGroundSprite> topGround = new TileType<>(topGroundSprite.class, topGroundSprite);
 		TileType<bottomGroundSprite> bottomGround = new TileType<>(bottomGroundSprite.class, bottomGroundSprite);
 		TileType<platformSprite> platform = new TileType<>(platformSprite.class, platformSprite);
@@ -96,6 +95,12 @@ public class HelloMisterPresident extends GameEngine{
                 {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
                 {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 		};
