@@ -38,11 +38,11 @@ public class Player extends SpriteObject{
 	@Override
 	public void keyPressed(int keyCode, char key) {
 		final int speed = 5;
-		if(keyCode == world.LEFT) {
+		if(keyCode == world.LEFT && this.getY() == 350.0) {
 			setDirectionSpeed(270, speed);
 			currentDirection = 270;
 		}
-		else if(keyCode == world.RIGHT) {
+		else if(keyCode == world.RIGHT || this.getY() == 350.0) {
 			setDirectionSpeed(90, speed);
 			currentDirection = 90;
 		}
@@ -57,8 +57,10 @@ public class Player extends SpriteObject{
 	@Override
 	public void keyReleased(int keyCode, char key) {
 		final int speed = 0;
+		if(this.getY() == 350.0) {
 		if(keyCode == world.LEFT || keyCode == world.RIGHT) {
 			setDirectionSpeed(0, speed);
 		}
+	}
 	}
 }
