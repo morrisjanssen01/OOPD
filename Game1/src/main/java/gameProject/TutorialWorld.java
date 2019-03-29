@@ -19,7 +19,8 @@ public class TutorialWorld extends GameEngine{
 	public void setupGame() {
 		player = new Player(this);
 		addGameObject(player, 30, 350);
-		
+		player.setGravity((float)(1.0));
+d		
 		int worldWidth = 1016;
 		int worldHeight = 508;
 		

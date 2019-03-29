@@ -10,6 +10,7 @@ public class Player extends SpriteObject{
 	
 	public Player(TutorialWorld world) {
 		super(new Sprite(TutorialWorld.MEDIA_URL.concat("player_idle.png")));
+		//setGravity((float)1.0);
 //		this.jumpDirection = 0;
 	}
 	
@@ -21,11 +22,13 @@ public class Player extends SpriteObject{
 //		else if(jumpDirection > 91) {
 //			jumpDirection--;
 //		}
+		//blijf op de grond staan
 		if(this.getY() > 350.0) {
 			float newY = this.getY();
 			newY = newY - 10.0f;
 			this.setY((float)newY);
 		}
+		//ga naar beneden vanaf 250
 		if(this.getY() <= 250.0) {
 			setDirectionSpeed(180, 10);
 		}
