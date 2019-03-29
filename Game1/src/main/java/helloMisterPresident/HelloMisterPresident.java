@@ -69,7 +69,7 @@ public class HelloMisterPresident extends GameEngine{
 	
 	private void createObjects() {
 		player = new Player(this);
-		addGameObject(player, 100, 100);
+		addGameObject(player, 0, 800);
 	}
 	
 	private void initializeTileMap() {
