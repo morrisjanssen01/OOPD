@@ -36,7 +36,7 @@ public class HelloMisterPresident extends GameEngine{
 		int worldWidth = 1024;
 		int worldHeight = 1024;
 		
-//		initializeSound();
+		initializeSound();
 		initializeTileMap();
 		
 		createObjects();
@@ -62,10 +62,10 @@ public class HelloMisterPresident extends GameEngine{
 //		view.setBackground(loadImage(MEDIA_URL.concat("background-elements-redux/Backgrounds/backgroundCastles.png")));
 //	}
 	
-//	private void initializeSound() {
-//		backgroundMusic = new Sound(this, MEDIA_URL.concat("backgroundMusic.mp3"));
-//		backgroundMusic.loop(-1);
-//	}
+	private void initializeSound() {
+		backgroundMusic = new Sound(this, MEDIA_URL.concat("backgroundMusic.mp3"));
+		backgroundMusic.loop(-1);
+	}
 	
 	private void createObjects() {
 		player = new Player(this);
@@ -111,6 +111,7 @@ public class HelloMisterPresident extends GameEngine{
 	}
 	@Override
 	public void update() {
+		System.out.println(player.getY());
 		
 	}
 	
