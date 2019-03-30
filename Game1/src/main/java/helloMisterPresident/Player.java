@@ -14,14 +14,15 @@ import java.util.List;
 public class Player extends AnimatedSpriteObject implements ICollidableWithTiles{
 	final int size = 25;
 	private final HelloMisterPresident world;
-	private int currentDirection;
 	private int lives;
+	private int jumpHeight;
 	
 	public Player(HelloMisterPresident world) {
 		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/platformChar_idle1.png")), 2);
 		this.world = world;
 		setCurrentFrameIndex(0);
 		setFriction(0.05f);
+		jumpHeight = 200;
 	}
 	
 	@Override
@@ -53,6 +54,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 		if(keyCode == world.UP) {
 			setDirectionSpeed(0, speed);
+			
+			
 		}
 		if(keyCode == world.RIGHT) {
 			setDirectionSpeed(90, speed);
