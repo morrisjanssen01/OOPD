@@ -39,7 +39,7 @@ public class HelloMisterPresident extends GameEngine{
 //		initializeSound();
 		initializeTileMap();
 		
-		createObjects();
+//		createObjects();
 		
 		createViewWithoutViewport(worldWidth, worldHeight);
 		
@@ -67,22 +67,20 @@ public class HelloMisterPresident extends GameEngine{
 //		backgroundMusic.loop(-1);
 //	}
 	
-	private void createObjects() {
-		player = new Player(this);
-		addGameObject(player, 100, 100);
-	}
+//	private void createObjects() {
+//		player = new Player(this);
+//		addGameObject(player, 100, 100);
+//	}
 	
 	private void initializeTileMap() {
 		Sprite topGroundSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile001.png"));
 		Sprite bottomGroundSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile004.png"));
 		Sprite platformSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile034.png"));
-		Sprite platformEndSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile034.png"));
 		TileType<topGroundSprite> topGround = new TileType<>(topGroundSprite.class, topGroundSprite);
 		TileType<bottomGroundSprite> bottomGround = new TileType<>(bottomGroundSprite.class, bottomGroundSprite);
 		TileType<platformSprite> platform = new TileType<>(platformSprite.class, platformSprite);
-		TileType<platformEndSprite> platformEnd = new TileType<>(platformEndSprite.class, platformEndSprite);
 		
-		TileType[] tiles = {topGround, bottomGround, platform, platformEnd};
+		TileType[] tiles = {topGround, bottomGround, platform};
 		int tileSize = 50;
 		int tilesMap[][] = {
 				{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
@@ -99,7 +97,7 @@ public class HelloMisterPresident extends GameEngine{
                 {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
                 {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
                 {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
-                {-1, -1, -1, 3, 2, 2, 2, 2, 3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+                {-1, -1, -1, 2, 2, 2, 2, 2, 2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
                 {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
                 {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
