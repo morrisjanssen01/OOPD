@@ -28,6 +28,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	
 	@Override
 	public void update() {
+		gravity(2.0f);
 		if (getX() <= 0) {
 			setxSpeed(0);
 			setX(0);
@@ -80,6 +81,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 					try {
 						vector = world.getTileMap().getTilePixelLocation(ct.getTile());
 						setY(vector.y - getHeight());
+						setySpeed(0);
 					} catch(TileNotFoundException e) {
 						e.printStackTrace();
 					}
@@ -114,5 +116,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 				}
 			}
 		}
+	}
+	
+	public void gravity(float gravity) {
+		this.setY(this.getY() + gravity);
 	}
 }
