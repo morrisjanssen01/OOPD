@@ -29,7 +29,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	
 	@Override
 	public void update() {
-		gravity(2.5f);
+		gravity(5.0f);
 		if (getX() <= 0) {
 			setxSpeed(0);
 			setX(0);
@@ -57,8 +57,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			setFriction(0.05f);
 		}
 		if(keyCode == world.UP && canJump) {
-			setDirectionSpeed(0, speed);
-			setFriction(0.003f);
+			setDirectionSpeed(0, 10);
+			setFriction(0.006f);
 			canJump = false;
 		}
 		if(keyCode == world.RIGHT) {
