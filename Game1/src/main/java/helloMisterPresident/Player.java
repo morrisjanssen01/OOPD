@@ -23,6 +23,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		setCurrentFrameIndex(0);
 		setFriction(0.05f);
 		jumpHeight = 200;
+		setGravity(0.02f);
 	}
 	
 	@Override
