@@ -16,6 +16,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private final HelloMisterPresident world;
 	private int lives;
 	private int jumpHeight;
+	private boolean canJump;
 	
 	public Player(HelloMisterPresident world) {
 		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/platformChar_idle1.png")), 2);
@@ -23,12 +24,12 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		setCurrentFrameIndex(0);
 		setFriction(0.05f);
 		jumpHeight = 200;
-		setGravity(0.02f);
+		canJump = true;
 	}
 	
 	@Override
 	public void update() {
-		gravity(2.0f);
+		gravity(2.5f);
 		if (getX() <= 0) {
 			setxSpeed(0);
 			setX(0);
@@ -53,21 +54,30 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		if(keyCode == world.LEFT) {
 			setDirectionSpeed(270, speed);
 			setCurrentFrameIndex(1);
+			setFriction(0.05f);
 		}
-		if(keyCode == world.UP) {
+		if(keyCode == world.UP && canJump) {
 			setDirectionSpeed(0, speed);
-			
-			
+			setFriction(0.003f);
+			canJump = false;
 		}
 		if(keyCode == world.RIGHT) {
 			setDirectionSpeed(90, speed);
 			setCurrentFrameIndex(0);
+			setFriction(0.05f);
 		}
 		if(keyCode == world.DOWN) {
 			setDirectionSpeed(180, speed);
 		}
 		if(key == ' ') {
 			System.out.println("Spatie!");
+		}
+	}
+	
+	@Override
+	public void keyReleased(int keyCode, char key) {
+		if(keyCode == world.UP) {
+			setFriction(0.05f);
 		}
 	}
 	
@@ -82,6 +92,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 						vector = world.getTileMap().getTilePixelLocation(ct.getTile());
 						setY(vector.y - getHeight());
 						setySpeed(0);
+						canJump = true;
 					} catch(TileNotFoundException e) {
 						e.printStackTrace();
 					}
@@ -92,6 +103,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 					try {
 						vector = world.getTileMap().getTilePixelLocation(ct.getTile());
 						setY(vector.y - getHeight());
+						canJump = true;
 					} catch(TileNotFoundException e) {
 						e.printStackTrace();
 					}
