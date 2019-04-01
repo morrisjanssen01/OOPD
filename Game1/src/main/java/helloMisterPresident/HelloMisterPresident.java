@@ -20,9 +20,8 @@ public class HelloMisterPresident extends GameEngine{
 	private Sound backgroundMusic;
 	private TextObject hubText;
 	private Player player;
-	private Flag flag;
-//	private button Music;
-//	private button Soundeffects;
+	private button Music;
+	private button Soundeffects;
 	
 	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
 
@@ -86,12 +85,15 @@ public class HelloMisterPresident extends GameEngine{
 		Sprite bottomGroundSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile004.png"));
 		Sprite platformSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile034.png"));
 		Sprite platformEndSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile034.png"));
+		Sprite FlagSprite = new Sprite(MEDIA_URL.concat("finish.png"));
 		TileType<topGroundSprite> topGround = new TileType<>(topGroundSprite.class, topGroundSprite);
 		TileType<bottomGroundSprite> bottomGround = new TileType<>(bottomGroundSprite.class, bottomGroundSprite);
 		TileType<platformSprite> platform = new TileType<>(platformSprite.class, platformSprite);
 		TileType<platformEndSprite> platformEnd = new TileType<>(platformEndSprite.class, platformEndSprite);
+		TileType<flagSprite> Flag = new TileType<>(flagSprite.class, FlagSprite);
 		
-		TileType[] tiles = {topGround, bottomGround, platform, platformEnd};
+		
+		TileType[] tiles = {topGround, bottomGround, platform, platformEnd, Flag};
 		int tileSize = 50;
 		int tilesMap[][] = {
 				{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
