@@ -20,8 +20,8 @@ public class HelloMisterPresident extends GameEngine{
 	private Sound backgroundMusic;
 	private TextObject hubText;
 	private Player player;
-	private MusicButton musicButton;
-	private SoundButton soundButton;
+	public MusicButton musicButton;
+	public SoundButton soundButton;
 	
 	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
 
@@ -126,6 +126,7 @@ public class HelloMisterPresident extends GameEngine{
 	}
 	@Override
 	public void update() {		
+		System.out.println(soundButton.aanUit);
 	}
 	
 	public Sound getbackgroundMusic() {
