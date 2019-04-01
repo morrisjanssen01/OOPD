@@ -62,8 +62,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		if(keyCode == world.UP && canJump || key == 'w' && canJump) {
 			setDirectionSpeed(0, 10);
 			setFriction(0.006f);
+			if(world.soundButton.aanUit) {
 			jump.rewind();
 			jump.play();
+			}
 			canJump = false;
 		}
 		if(keyCode == world.RIGHT || key == 'd') {
