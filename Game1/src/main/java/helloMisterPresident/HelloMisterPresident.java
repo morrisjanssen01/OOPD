@@ -21,6 +21,8 @@ public class HelloMisterPresident extends GameEngine{
 	private TextObject hubText;
 	private Player player;
 	private Flag flag;
+	private button Music;
+	private button Soundeffects;
 	
 	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
 
@@ -73,6 +75,8 @@ public class HelloMisterPresident extends GameEngine{
 		addGameObject(player, 0, 800);
 //  	flag = new Flag(this);
 //		addGameObject(flag,700,800);
+		TextObject th = new TextObject("The Hub", 40);
+		addGameObject(th, 435, 256);
 	}
 	
 	
