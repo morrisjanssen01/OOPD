@@ -8,6 +8,7 @@ import nl.han.ica.oopg.exceptions.TileNotFoundException;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.Sprite;
 import processing.core.PVector;
+import nl.han.ica.oopg.sound.Sound;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private int lives;
 	private int jumpHeight;
 	private boolean canJump;
+	private Sound jump;
 	
 	public Player(HelloMisterPresident world) {
 		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/platformChar_idle1.png")), 2);
@@ -51,22 +53,23 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	@Override
 	public void keyPressed(int keyCode, char key) {
 		final int speed = 5;
-		if(keyCode == world.LEFT) {
+		if(keyCode == world.LEFT || key == 'a') {
 			setDirectionSpeed(270, speed);
 			setCurrentFrameIndex(1);
 			setFriction(0.05f);
 		}
-		if(keyCode == world.UP && canJump) {
+		if(keyCode == world.UP && canJump || key == 'w' && canJump) {
 			setDirectionSpeed(0, 10);
 			setFriction(0.006f);
+			jump = new Sound(world, HelloMisterPresident.MEDIA_URL.concat("jump.mp3"));
 			canJump = false;
 		}
-		if(keyCode == world.RIGHT) {
+		if(keyCode == world.RIGHT || key == 'd') {
 			setDirectionSpeed(90, speed);
 			setCurrentFrameIndex(0);
 			setFriction(0.05f);
 		}
-		if(keyCode == world.DOWN) {
+		if(keyCode == world.DOWN || key == 's') {
 			setDirectionSpeed(180, speed);
 		}
 		if(key == ' ') {
