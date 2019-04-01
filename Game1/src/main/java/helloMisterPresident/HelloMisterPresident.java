@@ -20,6 +20,7 @@ public class HelloMisterPresident extends GameEngine{
 	private Sound backgroundMusic;
 	private TextObject hubText;
 	private Player player;
+	private Flag flag;
 	
 	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
 
@@ -70,7 +71,11 @@ public class HelloMisterPresident extends GameEngine{
 	private void createObjects() {
 		player = new Player(this);
 		addGameObject(player, 0, 800);
+//  	flag = new Flag(this);
+//		addGameObject(flag,700,800);
 	}
+	
+	
 	
 	private void initializeTileMap() {
 		Sprite topGroundSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile001.png"));
