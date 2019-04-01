@@ -1,14 +1,10 @@
 package helloMisterPresident;
 
+import nl.han.ica.oopg.userinput.IMouseInput;
 
-public abstract class Button{
+public interface Button extends IMouseInput{
 	
-	public Button() {
-		
-	}
-	
-	public abstract void buttonAction() {
-		
-	}
+	public void buttonAction();
+	public void mouseClicked(int x, int y, int button);
 
 }

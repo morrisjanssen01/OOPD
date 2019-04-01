@@ -21,7 +21,7 @@ public class HelloMisterPresident extends GameEngine{
 	private TextObject hubText;
 	private Player player;
 	private Flag flag;
-//	private button Music;
+	private MusicButton musicButton;
 //	private button Soundeffects;
 	
 	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
@@ -39,10 +39,11 @@ public class HelloMisterPresident extends GameEngine{
 		int worldWidth = 1024;
 		int worldHeight = 1024;
 		
-		initializeSound();
+		
 		initializeTileMap();
 		
 		createObjects();
+		initializeSound();
 		
 		createViewWithoutViewport(worldWidth, worldHeight);
 		
@@ -66,9 +67,11 @@ public class HelloMisterPresident extends GameEngine{
 //	}
 	
 	private void initializeSound() {
+		if(musicButton.aanUit == true) {
 		backgroundMusic = new Sound(this, MEDIA_URL.concat("backgroundMusic.mp3"));
 		backgroundMusic.loop(-1);
 	}
+}
 	
 	private void createObjects() {
 		player = new Player(this);
@@ -77,6 +80,10 @@ public class HelloMisterPresident extends GameEngine{
 //		addGameObject(flag,700,800);
 		TextObject th = new TextObject("The Hub", 40);
 		addGameObject(th, 435, 256);
+		musicButton = new MusicButton();
+		addGameObject(musicButton, 0, 0);
+//		soundButton = new SoundButton();
+//		addGameObject(soundButton, 977, 0);
 	}
 	
 	
@@ -119,9 +126,7 @@ public class HelloMisterPresident extends GameEngine{
 		tileMap = new TileMap(tileSize, tiles, tilesMap);
 	}
 	@Override
-	public void update() {
-		System.out.println(player.getY());
-		
+	public void update() {		
 	}
 	
 	

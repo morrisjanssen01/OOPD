@@ -18,7 +18,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private int lives;
 	private int jumpHeight;
 	private boolean canJump;
-	private Sound jump;
+	public Sound jump;
 	
 	public Player(HelloMisterPresident world) {
 		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/platformChar_idle1.png")), 2);
