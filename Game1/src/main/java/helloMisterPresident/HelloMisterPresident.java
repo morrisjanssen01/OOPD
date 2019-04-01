@@ -21,8 +21,8 @@ public class HelloMisterPresident extends GameEngine{
 	private TextObject hubText;
 	private Player player;
 	private Flag flag;
-	private button Music;
-	private button Soundeffects;
+//	private button Music;
+//	private button Soundeffects;
 	
 	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
 

@@ -22,6 +22,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	
 	public Player(HelloMisterPresident world) {
 		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/platformChar_idle1.png")), 2);
+		jump = new Sound(world, HelloMisterPresident.MEDIA_URL.concat("jump.mp3"));
 		this.world = world;
 		setCurrentFrameIndex(0);
 		setFriction(0.05f);
@@ -61,7 +62,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		if(keyCode == world.UP && canJump || key == 'w' && canJump) {
 			setDirectionSpeed(0, 10);
 			setFriction(0.006f);
-			jump = new Sound(world, HelloMisterPresident.MEDIA_URL.concat("jump.mp3"));
+			jump.rewind();
+			jump.play();
 			canJump = false;
 		}
 		if(keyCode == world.RIGHT || key == 'd') {
