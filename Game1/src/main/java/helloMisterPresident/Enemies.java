@@ -3,7 +3,7 @@ package helloMisterPresident;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.Sprite;
 
-public class Enemies extends AnimatedSpriteObject {
+public abstract class Enemies extends AnimatedSpriteObject {
 
 	public Enemies(int x, int y, int grootte, Sprite sprite) {
 		this.x = x;
@@ -13,6 +13,8 @@ public class Enemies extends AnimatedSpriteObject {
 		
 		// TODO Auto-generated constructor stub
 	}
+	
+	public abstract void beweeg();
 
 	@Override
 	public void update() {

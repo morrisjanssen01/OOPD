@@ -5,7 +5,7 @@ import processing.core.PGraphics;
 import processing.core.PApplet;
 
 
-public class Entities extends GameObject {
+public abstract class Entities extends GameObject {
 			protected int x;
 			protected int y;
 			protected int grootte;
