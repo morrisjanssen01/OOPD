@@ -15,14 +15,11 @@ public abstract class Enemies extends AnimatedSpriteObject {
 	}
 	
 	
-	public static void beweeg() {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void beweeg();
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		beweeg();
 		
 	}
 

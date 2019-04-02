@@ -6,7 +6,7 @@ import nl.han.ica.oopg.objects.Sprite;
 
 public class Virus_Normal extends Enemies{
 	private int richting;
-	private float speed;
+	private float speed = 1;
 	private int Punt1;
 	private int Punt2;
 	
@@ -23,7 +23,7 @@ public class Virus_Normal extends Enemies{
 		if(this.x >= Punt2) {
 			richting = 1;
 		}
-		else if(this.prevX <= Punt1) {
+		else if(this.x <= Punt1) {
 			richting = 0;
 		}
 		if(richting == 0) {
@@ -32,6 +32,7 @@ public class Virus_Normal extends Enemies{
 		if(richting == 1) {
 			this.x -= speed;
 		}
+		
 	}
 	
 	@Override

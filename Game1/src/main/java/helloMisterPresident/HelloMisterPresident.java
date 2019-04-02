@@ -130,7 +130,7 @@ public class HelloMisterPresident extends GameEngine{
 	@Override
 	public void update() {		
 		System.out.println(soundButton.aanUit);
-		Enemies.beweeg();	
+		virus.beweeg();	
 	}
 	
 	public Sound getbackgroundMusic() {
