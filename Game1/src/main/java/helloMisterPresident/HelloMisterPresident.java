@@ -80,6 +80,7 @@ public class HelloMisterPresident extends GameEngine{
 		addGameObject(musicButton, 0, 0);
 		soundButton = new SoundButton();
 		addGameObject(soundButton, 977, 0);
+		Virus_Normal.Virus_Normal(500,500,1);
 	}
 	
 	
@@ -132,6 +133,8 @@ public class HelloMisterPresident extends GameEngine{
 	public Sound getbackgroundMusic() {
 		return backgroundMusic;
 	}
+	
+	
 	
 	
 

@@ -4,17 +4,16 @@ import helloMisterPresident.Enemies;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.Sprite;
 
-public class Virus_Normal extends AnimatedSpriteObject extends Enemies{
+public class Virus_Normal extends Enemies{
 	private int richting;
 	private float speed;
 	private int Punt1;
 	private int Punt2;
 	
-	public Virus_Normal(int x, int y, int grootte, int richting) {
-		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/Virus_Normal.png")), 2);
-		super(x, y, grootte);
+	public Virus_Normal(int x, int y, int richting) {
+		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/Virus_Normal.png")));
 		this.richting = richting;
-		this.Punt1 = this.x;
+		this.Punt1 = (int) this.x;
 		this.Punt2 = this.Punt1 + 100;
 	}
 	
