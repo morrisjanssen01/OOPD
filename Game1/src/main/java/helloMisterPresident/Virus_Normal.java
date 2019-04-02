@@ -36,6 +36,7 @@ public class Virus_Normal extends Enemies{
 	
 	@Override
 	public void update() {
+		beweeg();
 	}
 
 }
