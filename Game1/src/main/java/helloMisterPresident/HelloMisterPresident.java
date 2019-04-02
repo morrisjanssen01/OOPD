@@ -22,6 +22,7 @@ public class HelloMisterPresident extends GameEngine{
 	private Player player;
 	public MusicButton musicButton;
 	public SoundButton soundButton;
+	private Virus_Normal virus;
 	
 	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
 
@@ -80,7 +81,8 @@ public class HelloMisterPresident extends GameEngine{
 		addGameObject(musicButton, 0, 0);
 		soundButton = new SoundButton();
 		addGameObject(soundButton, 977, 0);
-		Virus_Normal.Virus_Normal(500,500,1);
+		virus = new Virus_Normal(500,500,1);
+		addGameObject(virus, 500, 800);
 	}
 	
 	
@@ -128,6 +130,7 @@ public class HelloMisterPresident extends GameEngine{
 	@Override
 	public void update() {		
 		System.out.println(soundButton.aanUit);
+		virus.beweeg();
 	}
 	
 	public Sound getbackgroundMusic() {

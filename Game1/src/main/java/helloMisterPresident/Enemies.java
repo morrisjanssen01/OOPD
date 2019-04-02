@@ -6,7 +6,7 @@ import nl.han.ica.oopg.objects.Sprite;
 public abstract class Enemies extends AnimatedSpriteObject {
 
 	public Enemies(int x, int y, Sprite sprite) {
-		super(( sprite), 2);
+		super((sprite), 2);
 		this.x = x;
 		this.y = y;
 		
