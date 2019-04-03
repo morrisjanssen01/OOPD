@@ -41,7 +41,7 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 		}
 		
 	}
-
+		//zooi
 	public void getSchietRichting() {
 		if (this.x >= world.getPlayer().getX()) {
 		schietRichting = 1;
