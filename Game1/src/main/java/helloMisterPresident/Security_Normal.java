@@ -9,13 +9,15 @@ public class Security_Normal extends Enemies{
 	private float speed = 5;
 	private int Punt1;
 	private int Punt2;
+	private HelloMisterPresident world;
 	
-	public Security_Normal(int x, int y, int richting) {
+	public Security_Normal(int x, int y, int richting, HelloMisterPresident world) {
 		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/Security.png")));
 		this.richting = richting;
 		this.Punt1 = (int) this.x;
 		this.Punt2 = this.Punt1 + 100;
 		setCurrentFrameIndex(0);
+		this.world = world;
 	}
 	
 	@Override
@@ -41,7 +43,7 @@ public class Security_Normal extends Enemies{
 
 	@Override
 	public void die() {
-		// TODO Auto-generated method stub
+		world.deleteGameObject(this);
 		
 	}
 

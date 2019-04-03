@@ -64,13 +64,18 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 	
 	@Override
 	public void triggerAlarm(String alarmName) {
+		if (alarmName == "Schieten") {
 		Projectiel p = new Projectiel(this.x,this.y, 4f, this.richting);
 		world.addGameObject(p,(float)this.x, (float)this.getCenterY());
+	}
+		else if (alarmName =="Die") {
+			this.die();
+		}
 	}
 
 	@Override
 	public void die() {
-		// TODO Auto-generated method stub
+		world.deleteGameObject(this);
 		
 	}
 
