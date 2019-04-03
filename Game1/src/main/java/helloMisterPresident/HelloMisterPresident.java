@@ -1,6 +1,7 @@
 package helloMisterPresident;
 
 import helloMisterPresident.tiles.*;
+import nl.han.ica.oopg.alarm.Alarm;
 import nl.han.ica.oopg.dashboard.Dashboard;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.objects.Sprite;
