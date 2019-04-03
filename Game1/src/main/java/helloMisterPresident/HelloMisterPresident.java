@@ -133,4 +133,16 @@ public class HelloMisterPresident extends GameEngine{
 	public Player getPlayer() {
 		return player;
 	}
+	
+	public void startAlarm() {
+		Alarm alarm = new Alarm("Enemy", 10);
+		alarm.addTarget(this);  
+		//TO-DO dit werkend krijgen, zorgen dat er een variatie aan enemies kan spawnen
+	}
+	
+	public void triggerAlarm(String alarmName) {
+		if (alarmName == "Enemy") {
+			addGameObject(virus,500,800 );
+		}
+	}
 }

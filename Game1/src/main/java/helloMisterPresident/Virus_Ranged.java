@@ -57,6 +57,7 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 		if (alarmName == "Schieten") {
 		Projectiel p = new Projectiel(this.x,this.y, 4f, this.richting);
 		world.addGameObject(p,(float)this.x, (float)this.getCenterY());
+		alarm.start();
 	}
 		else if (alarmName =="Die") {
 			this.die();
