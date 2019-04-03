@@ -17,7 +17,7 @@ public class Projectiel extends SpriteObject implements ICollidableWithGameObjec
 	
 	
 	public Projectiel(float x, float y, float velocity, int richting) {
-		super(new Sprite (HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/mon2_sprite_base1.png")));
+		super(new Sprite (HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/mon2_sprite_base1.png"))); //sprite aanpassen
 		this.x = x;
 		this.y = y;
 		this.velocity = velocity;

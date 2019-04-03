@@ -1,15 +1,18 @@
 package helloMisterPresident;
 
+import nl.han.ica.oopg.alarm.Alarm;
 import nl.han.ica.oopg.alarm.IAlarmListener;
 import nl.han.ica.oopg.objects.Sprite;
 
 public class Virus_Ranged extends Enemies implements IAlarmListener {
 
 	private int richting;
-	private float speed = 1;
+	private float speed = 0;
 	private int Punt1;
 	private int Punt2;
 	private final HelloMisterPresident world;
+	private double schietDelay = 3;
+	private Alarm alarm;
 	
 	public Virus_Ranged(int x, int y, Sprite sprite, HelloMisterPresident world) {
 		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/mon2_sprite_base1.png"))); //Sprite nog aanpassen
@@ -18,6 +21,7 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 		this.Punt2 = this.Punt1 + 100;
 		setCurrentFrameIndex(0);
 		this.world = world;
+		startAlarm();
 	}
 
 	@Override
@@ -41,11 +45,17 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 		Projectiel projectiel = new Projectiel(this.x,this.y, 4f, this.richting);
 		world.addGameObject(projectiel,(float)this.x, (float)this.getCenterY());
 	}
-
+	
+	public void startAlarm(){
+	alarm = new Alarm("Schieten", schietDelay);
+	alarm.addTarget(this);
+	alarm.start();
+	}
+	
 	@Override
 	public void triggerAlarm(String alarmName) {
-		schiet();
-		
+		Projectiel p = new Projectiel(this.x,this.y, 4f, this.richting);
+		world.addGameObject(p,(float)this.x, (float)this.getCenterY());
 	}
-
+	
 }

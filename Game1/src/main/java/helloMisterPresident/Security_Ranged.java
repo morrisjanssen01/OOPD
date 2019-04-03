@@ -1,8 +1,9 @@
 package helloMisterPresident;
 
+import nl.han.ica.oopg.alarm.IAlarmListener;
 import nl.han.ica.oopg.objects.Sprite;
 
-public class Security_Ranged extends Enemies{
+public class Security_Ranged extends Enemies implements IAlarmListener{
 
 	private int richting;
 	private float speed = 5;
@@ -32,6 +33,12 @@ public class Security_Ranged extends Enemies{
 		if(richting == 1) {
 			this.x -= speed;
 		}
+		
+	}
+
+	@Override
+	public void triggerAlarm(String alarmName) {
+		// TODO Auto-generated method stub
 		
 	}
 
