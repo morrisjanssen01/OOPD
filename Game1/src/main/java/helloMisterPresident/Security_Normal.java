@@ -6,7 +6,7 @@ import nl.han.ica.oopg.objects.Sprite;
 
 public class Security_Normal extends Enemies{
 	private int richting;
-	private float speed;
+	private float speed = 5;
 	private int Punt1;
 	private int Punt2;
 	
@@ -27,10 +27,10 @@ public class Security_Normal extends Enemies{
 			richting = 0;
 		}
 		if(richting == 0) {
-		 this.x += speed*5;
+		 this.x += speed;
 		}
 		if(richting == 1) {
-			this.x -= speed*5;
+			this.x -= speed;
 		}
 	}
 	
