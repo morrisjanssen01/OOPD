@@ -34,8 +34,16 @@ public class Projectiel extends SpriteObject implements ICollidableWithGameObjec
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		beweegPijl();
 		
 	}
 
+	public void beweegPijl() {
+		if(richting == 0) {
+			this.x += velocity;
+			}
+			if(richting == 1) {
+			this.x -= velocity;
+			}
+	}
 }

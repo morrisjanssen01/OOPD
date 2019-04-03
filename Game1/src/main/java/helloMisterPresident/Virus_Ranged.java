@@ -42,7 +42,7 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 		
 	}
 	public void schiet() {
-		Projectiel projectiel = new Projectiel(this.x,this.y, 4f, this.richting);
+		Projectiel projectiel = new Projectiel(this.x,this.y, 4f, 0);
 		world.addGameObject(projectiel,(float)this.x, (float)this.getCenterY());
 	}
 	

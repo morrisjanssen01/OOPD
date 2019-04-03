@@ -17,7 +17,7 @@ import java.util.List;
 public class Player extends AnimatedSpriteObject implements ICollidableWithTiles,ICollidableWithGameObjects{
 	final int size = 25;
 	private final HelloMisterPresident world;
-	private int lives;
+	private int lives = 3;
 	private int jumpHeight;
 	private boolean canJump;
 	public Sound jump;
