@@ -140,7 +140,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 	
 	public void die() {
-		
+		System.out.println("Player dead");
+		world.deleteGameObject(this);
 	}
 	
 	public void gravity(float gravity) {
@@ -151,7 +152,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for(GameObject g : collidedGameObjects) {
 			if(g instanceof Enemies) {
-				if(this.getY() + this.getHeight() > g.getY() + g.getHeight() && g.getX() == this.getX()) {
+				if(this.getY() + this.getHeight() < g.getY() && this.getX() - 48 < g.getX() && this.getX() + 48 > g.getX()) {
+					boolean eersteKeer = this.getY() + this.getHeight() > g.getY();
+					boolean tweedeKeer = this.getX() - 48 < g.getX() && this.getX() + 48 > g.getX();
+					System.out.println("1e: " + eersteKeer + " 2e: " + tweedeKeer);
 					this.die();
 				}
 			}

@@ -123,9 +123,7 @@ public class HelloMisterPresident extends GameEngine{
 	}
 	@Override
 	public void update() {		
-//		System.out.println(soundButton.aanUit);
-		System.out.println("Player Y: " + player.getY());
-		System.out.println("Virus Y: " + virus.getY());
+
 	}
 	
 	public Sound getbackgroundMusic() {

@@ -27,7 +27,7 @@ public abstract class Enemies extends AnimatedSpriteObject implements ICollidabl
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for(GameObject g : collidedGameObjects) {
 			if(g instanceof Player) {
-				if(this.getY() + this.getHeight() > g.getY() && this.getX() - 48 < g.getX() && this.getX() + 48 > g.getX()) {
+				if(this.getY() + this.getHeight() > g.getY() + g.getHeight() && this.getX() - 48 < g.getX() && this.getX() + 48 > g.getX()) {
 					this.die();
 				}
 			}
