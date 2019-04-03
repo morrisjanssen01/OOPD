@@ -20,7 +20,18 @@ public class Security_Ranged extends Enemies{
 
 	@Override
 	public void beweeg() {
-		// TODO Auto-generated method stub
+		if(this.x >= Punt2) {
+			richting = 1;
+		}
+		else if(this.x <= Punt1) {
+			richting = 0;
+		}
+		if(richting == 0) {
+		 this.x += speed;
+		}
+		if(richting == 1) {
+			this.x -= speed;
+		}
 		
 	}
 
