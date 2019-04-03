@@ -57,5 +57,11 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 		Projectiel p = new Projectiel(this.x,this.y, 4f, this.richting);
 		world.addGameObject(p,(float)this.x, (float)this.getCenterY());
 	}
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

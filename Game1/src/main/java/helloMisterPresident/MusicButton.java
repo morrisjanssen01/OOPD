@@ -18,6 +18,7 @@ public class MusicButton extends AnimatedSpriteObject implements Button{
 	
 	@Override
 	public void update() {
+		
 	}
 	
 	@Override

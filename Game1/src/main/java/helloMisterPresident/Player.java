@@ -139,6 +139,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 	
+	public void die() {
+		
+	}
+	
 	public void gravity(float gravity) {
 		this.setY(this.getY() + gravity);
 	}
@@ -147,14 +151,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for(GameObject g : collidedGameObjects) {
 			if(g instanceof Enemies) {
-				if(g.getY() + g.getHeight() < this.getY() && g.getX() - 10 < this.getX() && g.getX() + 10 > this.getX()) {
-					//collisionEnemieBovenkant();
-				}
-				else if(g.getY() + g.getHeight() > this.getY() + this.getHeight() && this.getX() == g.getX()) {
-					//collisionEnemieZijkant();
+				if(this.getY() + this.getHeight() > g.getY() + g.getHeight() && g.getX() == this.getX()) {
+					this.die();
 				}
 			}
 		}
-		
 	}
 }
+	
+	
+

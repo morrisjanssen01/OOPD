@@ -15,7 +15,6 @@ import nl.han.ica.oopg.view.CenterFollowingViewport;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
 
-
 public class HelloMisterPresident extends GameEngine{
 	
 	private Sound backgroundMusic;
@@ -24,13 +23,11 @@ public class HelloMisterPresident extends GameEngine{
 	public MusicButton musicButton;
 	public SoundButton soundButton;
 	private Enemies virus;
-	
 	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
 
 	public static void main(String[] args) {
 		String[] processingArgs = {"helloMisterPresident.HelloMisterPresident"};
 		HelloMisterPresident theHubLevel = new HelloMisterPresident();
-		
 		PApplet.runSketch(processingArgs, theHubLevel);
 	}
 	
@@ -42,17 +39,13 @@ public class HelloMisterPresident extends GameEngine{
 		
 		initializeSound();
 		initializeTileMap();
-		
 		createObjects();
-		
 		createViewWithoutViewport(worldWidth, worldHeight);
-		
 	}
 	
 	private void createViewWithoutViewport(int screenWidth, int screenHeight) {
 		View view = new View(screenWidth, screenHeight);
 		view.setBackground(loadImage(MEDIA_URL.concat("background-elements-redux/Backgrounds/backgroundCastles.png")));
-		
 		setView(view);
 		size(screenWidth, screenHeight);
 	}
@@ -69,7 +62,7 @@ public class HelloMisterPresident extends GameEngine{
 	private void initializeSound() {
 		backgroundMusic = new Sound(this, MEDIA_URL.concat("backgroundMusic.mp3"));
 		backgroundMusic.loop(-1);
-}
+	}
 	
 	private void createObjects() {
 		player = new Player(this);
@@ -82,7 +75,7 @@ public class HelloMisterPresident extends GameEngine{
 		addGameObject(musicButton, 0, 0);
 		soundButton = new SoundButton();
 		addGameObject(soundButton, 977, 0);
-		virus = new Virus_Normal(500,500,1);
+		virus = new Virus_Normal(500,500,1, this);
 		addGameObject(virus, 500, 800);
 	}
 	
@@ -131,7 +124,6 @@ public class HelloMisterPresident extends GameEngine{
 	@Override
 	public void update() {		
 //		System.out.println(soundButton.aanUit);
-		virus.beweeg();
 		System.out.println("Player Y: " + player.getY());
 		System.out.println("Virus Y: " + virus.getY());
 	}
@@ -139,9 +131,4 @@ public class HelloMisterPresident extends GameEngine{
 	public Sound getbackgroundMusic() {
 		return backgroundMusic;
 	}
-	
-	
-	
-	
-
 }

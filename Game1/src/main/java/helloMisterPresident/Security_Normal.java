@@ -39,4 +39,10 @@ public class Security_Normal extends Enemies{
 		beweeg();
 	}
 
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -42,4 +42,10 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 		
 	}
 
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
