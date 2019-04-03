@@ -11,7 +11,7 @@ public class Virus_Normal extends Enemies{
 	private int Punt2;
 	
 	public Virus_Normal(int x, int y, int richting) {
-		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/mon2_sprite_base1.png")));
+		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/Virus.png")));
 		this.richting = richting;
 		this.Punt1 = (int) this.x;
 		this.Punt2 = this.Punt1 + 100;

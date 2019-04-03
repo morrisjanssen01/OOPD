@@ -147,7 +147,12 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for(GameObject g : collidedGameObjects) {
 			if(g instanceof Enemies) {
-				if()
+				if(g.getY() + g.getHeight() < this.getY() && g.getX() - 10 < this.getX() && g.getX() + 10 > this.getX()) {
+					collisionEnemieBovenkant();
+				}
+				else if(g.getY() + g.getHeight() > this.getY() + this.getHeight() && this.getX() == g.getX()) {
+					collisionEnemieZijkant();
+				}
 			}
 		}
 		
