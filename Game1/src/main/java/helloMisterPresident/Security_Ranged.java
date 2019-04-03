@@ -43,7 +43,7 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 	}
 
 	public void getSchietRichting() {
-		if (this.x >= getX()) {
+		if (this.x >= world.getPlayer().getX()) {
 		schietRichting = 1;
 		}
 		else {

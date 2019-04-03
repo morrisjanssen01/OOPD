@@ -129,4 +129,8 @@ public class HelloMisterPresident extends GameEngine{
 	public Sound getbackgroundMusic() {
 		return backgroundMusic;
 	}
+	
+	public Player getPlayer() {
+		return player;
+	}
 }
