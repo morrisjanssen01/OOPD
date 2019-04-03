@@ -27,7 +27,7 @@ public class Projectiel extends SpriteObject implements ICollidableWithGameObjec
 
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

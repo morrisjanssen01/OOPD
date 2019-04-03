@@ -159,6 +159,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 					this.die();
 				}
 			}
+			else if( g instanceof Projectiel) {
+				this.die();
+			}
 		}
 	}
 }
