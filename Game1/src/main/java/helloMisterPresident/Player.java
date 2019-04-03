@@ -3,16 +3,18 @@ package helloMisterPresident;
 import helloMisterPresident.tiles.*;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
+import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
 import nl.han.ica.oopg.exceptions.TileNotFoundException;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
+import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import processing.core.PVector;
 import nl.han.ica.oopg.sound.Sound;
 
 import java.util.List;
 
-public class Player extends AnimatedSpriteObject implements ICollidableWithTiles{
+public class Player extends AnimatedSpriteObject implements ICollidableWithTiles,ICollidableWithGameObjects{
 	final int size = 25;
 	private final HelloMisterPresident world;
 	private int lives;
@@ -139,5 +141,15 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	
 	public void gravity(float gravity) {
 		this.setY(this.getY() + gravity);
+	}
+
+	@Override
+	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+		for(GameObject g : collidedGameObjects) {
+			if(g instanceof Enemies) {
+				if()
+			}
+		}
+		
 	}
 }
