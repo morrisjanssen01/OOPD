@@ -6,37 +6,36 @@ import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.userinput.IMouseInput;
 
 @SuppressWarnings("unused")
-public class SoundButton extends AnimatedSpriteObject implements Button{
+public class SoundButton extends AnimatedSpriteObject implements Button {
 	public boolean aanUit;
-	
-	//Constructor
-	SoundButton(){
+
+	// Constructor
+	SoundButton() {
 		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("SoundButton.png")), 2);
 		this.aanUit = true;
 		setCurrentFrameIndex(0);
 	}
-	
+
 	@Override
 	public void update() {
 	}
-	
-	//De actie die de button uitvoert als erop wordt geklikt.
+
+	// De actie die de button uitvoert als erop wordt geklikt.
 	@Override
-	public void buttonAction(){
-		if(aanUit) {
+	public void buttonAction() {
+		if (aanUit) {
 			setCurrentFrameIndex(1);
 			aanUit = false;
-		}
-		else if(!aanUit) {
+		} else if (!aanUit) {
 			setCurrentFrameIndex(0);
 			aanUit = true;
 		}
 	}
-	
+
 	@Override
 	public void mouseClicked(int x, int y, int button) {
-		if(x >= 977 && x <= 1024 && y >= 0 && y <= 47) {
-		this.buttonAction();
+		if (x >= 977 && x <= 1024 && y >= 0 && y <= 47) {
+			this.buttonAction();
 		}
 	}
 }

@@ -14,44 +14,40 @@ public class Projectiel extends SpriteObject implements ICollidableWithGameObjec
 	private float velocity;
 	private int richting;
 	public HelloMisterPresident world;
-	
-	//Constructor
+
+	// Constructor
 	public Projectiel(float x, float y, float velocity, int richting, HelloMisterPresident world) {
-		super(new Sprite (HelloMisterPresident.MEDIA_URL.concat("PNG/Items/Energy Orb.png"))); 
+		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Items/Energy Orb.png")));
 		this.x = x;
 		this.y = y;
 		this.velocity = velocity;
 	}
 
-
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		
-		
+
 	}
 
-	
 	@Override
 	public void update() {
 		beweegProjectiel();
 	}
-	
-	//Zorgt voor het bewegen van het projectiel.
+
+	// Zorgt voor het bewegen van het projectiel.
 	public void beweegProjectiel() {
-		if(richting == 0) {
+		if (richting == 0) {
 			this.setX(getX() - velocity);
-			}
-			if(richting == 1) {
-			this.setX(getX() + velocity);
-			}
-	}
-	
-	//Returnt de richting die het projectiel op moet bewegen.
-	public int getRichting() {
-		if(world.getPlayer().getX() > this.getX()) {
-			richting = 1;
 		}
-		else if(world.getPlayer().getX() < this.getX()) {
+		if (richting == 1) {
+			this.setX(getX() + velocity);
+		}
+	}
+
+	// Returnt de richting die het projectiel op moet bewegen.
+	public int getRichting() {
+		if (world.getPlayer().getX() > this.getX()) {
+			richting = 1;
+		} else if (world.getPlayer().getX() < this.getX()) {
 			richting = 0;
 		}
 		return richting;
