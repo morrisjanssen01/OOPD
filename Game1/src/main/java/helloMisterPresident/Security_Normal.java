@@ -6,9 +6,10 @@ import nl.han.ica.oopg.alarm.IAlarmListener;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.Sprite;
 
+@SuppressWarnings("unused")
 public class Security_Normal extends Enemies implements IAlarmListener{
 	private int richting;
-	private float speed = 5;
+	private float speed = 1;
 	private HelloMisterPresident world;
 	private Alarm die;
 	
@@ -22,9 +23,11 @@ public class Security_Normal extends Enemies implements IAlarmListener{
 	public void beweeg() {
 		if(richting == 1) {
 		 this.x += speed;
+		 getRichting();
 		}
 		if(richting == 0) {
 			this.x -= speed;
+			getRichting();
 		}
 	}
 	

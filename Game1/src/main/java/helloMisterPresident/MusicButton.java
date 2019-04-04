@@ -3,7 +3,6 @@ package helloMisterPresident;
 import helloMisterPresident.Button;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.Sprite;
-import nl.han.ica.oopg.userinput.IMouseInput;
 
 public class MusicButton extends AnimatedSpriteObject implements Button{
 	public boolean aanUit;

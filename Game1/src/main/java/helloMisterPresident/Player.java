@@ -17,8 +17,6 @@ import java.util.List;
 public class Player extends AnimatedSpriteObject implements ICollidableWithTiles,ICollidableWithGameObjects{
 	final int size = 25;
 	private final HelloMisterPresident world;
-	private int lives = 3;
-	private int jumpHeight;
 	private boolean canJump;
 	public Sound jump;
 	
@@ -28,7 +26,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.world = world;
 		setCurrentFrameIndex(0);
 		setFriction(0.05f);
-		jumpHeight = 200;
 		canJump = true;
 	}
 	
@@ -43,16 +40,12 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(0);
 		}
-		if(getX() >= world.width - size) {
-			setxSpeed(0);
-			setX(world.width - size);
-		}
 		if(getY() >= world.height - size) {
-			setySpeed(0);
-			setY(world.height - size);
+			this.die();
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public void keyPressed(int keyCode, char key) {
 		final int speed = 5;
@@ -85,6 +78,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public void keyReleased(int keyCode, char key) {
 		if(keyCode == world.UP) {
@@ -143,8 +137,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	
 	public void die() {
 		System.out.println("Player dead");
-		world.deleteGameObject(this);
-		lives -= 1;
+		this.setX(0);
+		this.setY(800);
 	}
 	
 	public void gravity(float gravity) {
@@ -155,7 +149,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for(GameObject g : collidedGameObjects) {
 			if(g instanceof Enemies) {
-				if(this.getY() + this.getHeight() < g.getY() && this.getX() - 48 < g.getX() && this.getX() + 48 > g.getX()) {
+				if(this.getY() + this.getHeight() > g.getY() + g.getHeight() && this.getX() - 48 < g.getX() && this.getX() + 48 > g.getX()) {
 					boolean eersteKeer = this.getY() + this.getHeight() > g.getY();
 					boolean tweedeKeer = this.getX() - 48 < g.getX() && this.getX() + 48 > g.getX();
 					System.out.println("1e: " + eersteKeer + " 2e: " + tweedeKeer);

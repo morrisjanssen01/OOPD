@@ -5,12 +5,9 @@ import java.util.Random;
 import helloMisterPresident.tiles.*;
 import nl.han.ica.oopg.alarm.Alarm;
 import nl.han.ica.oopg.alarm.IAlarmListener;
-import nl.han.ica.oopg.dashboard.Dashboard;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.TextObject;
-import nl.han.ica.oopg.persistence.FilePersistence;
-import nl.han.ica.oopg.persistence.IPersistence;
 import nl.han.ica.oopg.sound.Sound;
 import nl.han.ica.oopg.tile.TileMap;
 import nl.han.ica.oopg.tile.TileType;
@@ -23,7 +20,6 @@ import processing.core.PImage;
 public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 	
 	private Sound backgroundMusic;
-	private TextObject hubText;
 	private Player player;
 	public MusicButton musicButton;
 	public SoundButton soundButton;
@@ -105,8 +101,8 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		addGameObject(musicButton, 0, 0);
 		soundButton = new SoundButton();
 		addGameObject(soundButton, 977, 0);
-		securityRanged = new Security_Ranged(500, 800, 1, this);
-		addGameObject(securityRanged, 500, 800);
+		security = new Virus_Ranged(500, 800, this);
+		addGameObject(security, 500, 800);
 	}
 	
 	
@@ -199,7 +195,7 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 	public void triggerAlarm(String alarmName) {
 		if (alarmName == "Enemy") {
 			Random randX = new Random(); 
-			int xE = randX.nextInt(801);
+			int xE = randX.nextInt(10241);
 			Random randE = new Random();
 			int Enemie = randE.nextInt(4);
 			if(Enemie == 0) {

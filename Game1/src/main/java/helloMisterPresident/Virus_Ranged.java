@@ -72,6 +72,7 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 				startAlarm();
 			}
 			else if(getCurrentFrameIndex() > 6) {
+				schiet.stop();
 				world.deleteGameObject(this);
 			}
 		}

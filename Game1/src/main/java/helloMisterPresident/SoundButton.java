@@ -5,6 +5,7 @@ import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.userinput.IMouseInput;
 
+@SuppressWarnings("unused")
 public class SoundButton extends AnimatedSpriteObject implements Button{
 	public boolean aanUit;
 	
