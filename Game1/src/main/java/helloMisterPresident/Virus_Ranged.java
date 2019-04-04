@@ -41,7 +41,7 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 		
 	}
 	public void schiet() {
-		Projectiel projectiel = new Projectiel(this.x,this.y, 4f, 0);
+		Projectiel projectiel = new Projectiel(this.x,this.y, 4f);
 		world.addGameObject(projectiel,(float)this.x, (float)this.getCenterY());
 	}
 	
@@ -54,7 +54,7 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 	@Override
 	public void triggerAlarm(String alarmName) {
 		if (alarmName == "Schieten") {
-		Projectiel p = new Projectiel(this.x,this.y, 4f, this.richting);
+		Projectiel p = new Projectiel(this.x,this.y, 4f);
 		world.addGameObject(p,(float)this.x, (float)this.getCenterY());
 		alarm.start();
 	}
@@ -65,7 +65,7 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 	@Override
 	public void die() {
 		world.deleteGameObject(this);
-		
+		alarm.stop();
 	}
 	
 }

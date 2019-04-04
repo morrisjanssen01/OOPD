@@ -53,7 +53,7 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 	}
 	public void schiet() {
 		schietRichting = getSchietRichting();
-		Projectiel projectiel = new Projectiel(this.x,this.y, 4f, schietRichting);
+		Projectiel projectiel = new Projectiel(this.x,this.y, 4f);
 		world.addGameObject(projectiel,(float)this.x, (float)this.getCenterY());
 	}
 	
@@ -66,7 +66,7 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 	@Override
 	public void triggerAlarm(String alarmName) {
 		if (alarmName == "Schieten") {
-		Projectiel p = new Projectiel(this.x,this.y, 4f, this.richting);
+		Projectiel p = new Projectiel(this.x,this.y, 4f);
 		world.addGameObject(p,(float)this.x, (float)this.getCenterY());
 		alarm.start();
 	}
