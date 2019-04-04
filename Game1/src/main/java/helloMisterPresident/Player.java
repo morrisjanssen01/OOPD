@@ -43,10 +43,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			setySpeed(0);
 			setY(0);
 		}
-		if(getX() >= world.width - size) {
-			setxSpeed(0);
-			setX(world.width - size);
-		}
 		if(getY() >= world.height - size) {
 			setySpeed(0);
 			setY(world.height - size);

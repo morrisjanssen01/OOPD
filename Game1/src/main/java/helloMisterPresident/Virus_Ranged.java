@@ -22,7 +22,7 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 		this.Punt2 = this.Punt1 + 100;
 		setCurrentFrameIndex(0);
 		this.world = world;
-		//startSchiet();
+		startSchiet();
 	}
 
 	@Override
