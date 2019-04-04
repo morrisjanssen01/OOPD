@@ -90,16 +90,14 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 	private void createObjects() {
 		player = new Player(this);
 		addGameObject(player, 0, 800);
-//  	flag = new Flag(this);
-//		addGameObject(flag,700,800);
 		TextObject th = new TextObject("The Hub", 40);
 		addGameObject(th, 435, 256);
 		musicButton = new MusicButton(this);
 		addGameObject(musicButton, 0, 0);
 		soundButton = new SoundButton();
 		addGameObject(soundButton, 977, 0);
-		virus = new Virus_Normal(500,500,1, this);
-		addGameObject(virus, 500, 800);
+		virusRanged = new Virus_Ranged(500, 800, this);
+		addGameObject(virusRanged, 500, 800);
 	}
 	
 	
