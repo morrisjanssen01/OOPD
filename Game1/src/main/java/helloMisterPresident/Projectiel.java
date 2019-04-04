@@ -12,11 +12,12 @@ public class Projectiel extends SpriteObject implements ICollidableWithGameObjec
 	private float y;
 	private float velocity;
 	private int richting;
+	public HelloMisterPresident world;
 	
 	
 	
 	
-	public Projectiel(float x, float y, float velocity) {
+	public Projectiel(float x, float y, float velocity, int richting, HelloMisterPresident world) {
 		super(new Sprite (HelloMisterPresident.MEDIA_URL.concat("PNG/Items/Energy Orb.png"))); 
 		this.x = x;
 		this.y = y;
@@ -34,15 +35,24 @@ public class Projectiel extends SpriteObject implements ICollidableWithGameObjec
 	@Override
 	public void update() {
 		beweegProjectiel();
-		
 	}
 
 	public void beweegProjectiel() {
 		if(richting == 0) {
-			this.x += velocity;
+			this.setX(getX() - velocity);
 			}
 			if(richting == 1) {
-			this.x -= velocity;
+			this.setX(getX() + velocity);
 			}
+	}
+	
+	public int getRichting() {
+		if(world.getPlayer().getX() > this.getX()) {
+			richting = 1;
+		}
+		else if(world.getPlayer().getX() < this.getX()) {
+			richting = 0;
+		}
+		return richting;
 	}
 }

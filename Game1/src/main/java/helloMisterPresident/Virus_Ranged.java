@@ -12,7 +12,9 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 	private int Punt2;
 	private final HelloMisterPresident world;
 	private double schietDelay = 3;
-	private Alarm alarm;
+	private Alarm schiet;
+	private int schietRichting;
+	private Alarm die;
 	
 	public Virus_Ranged(int x, int y, HelloMisterPresident world) {
 		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/Virus_Ranged.png")));
@@ -20,7 +22,7 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 		this.Punt2 = this.Punt1 + 100;
 		setCurrentFrameIndex(0);
 		this.world = world;
-		startAlarm();
+		startSchiet();
 	}
 
 	@Override
@@ -41,31 +43,52 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 		
 	}
 	public void schiet() {
-		Projectiel projectiel = new Projectiel(this.x,this.y, 4f);
+		schietRichting = getSchietRichting();
+		Projectiel projectiel = new Projectiel(this.x,this.y, 4f, schietRichting, world);
 		world.addGameObject(projectiel,(float)this.x, (float)this.getCenterY());
 	}
 	
-	public void startAlarm(){
-	alarm = new Alarm("Schieten", schietDelay);
-	alarm.addTarget(this);
-	alarm.start();
+	public void startSchiet(){
+	schiet = new Alarm("Schieten", schietDelay);
+	schiet.addTarget(this);
+	schiet.start();
+	}
+	
+	public void startAlarm() {
+		die = new Alarm("Die", 0.1);
+		die.addTarget(this);
+		die.start();
 	}
 	
 	@Override
 	public void triggerAlarm(String alarmName) {
 		if (alarmName == "Schieten") {
-		Projectiel p = new Projectiel(this.x,this.y, 4f);
-		world.addGameObject(p,(float)this.x, (float)this.getCenterY());
-		alarm.start();
+		schiet();
+		startSchiet();
 	}
 		else if (alarmName =="Die") {
-			this.die();
+			if(this.getCurrentFrameIndex() < 7) {
+				this.setCurrentFrameIndex(getCurrentFrameIndex() + 1);
+				startAlarm();
+			}
+			else if(getCurrentFrameIndex() > 6) {
+				world.deleteGameObject(this);
+			}
 		}
 	}
 	@Override
 	public void die() {
-		world.deleteGameObject(this);
-		alarm.stop();
+		startAlarm();		
+	}
+	
+	public int getSchietRichting() {
+		if(world.getPlayer().getX() > this.getX()) {
+			schietRichting = 1;
+		}
+		else if(world.getPlayer().getX() < this.getX()) {
+			schietRichting = 0;
+		}
+		return schietRichting;
 	}
 	
 }

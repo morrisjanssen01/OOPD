@@ -96,8 +96,8 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		addGameObject(musicButton, 0, 0);
 		soundButton = new SoundButton();
 		addGameObject(soundButton, 977, 0);
-		virusRanged = new Virus_Ranged(500, 800, this);
-		addGameObject(virusRanged, 500, 800);
+		securityRanged = new Security_Ranged(500, 800, 1, this);
+		addGameObject(securityRanged, 500, 800);
 	}
 	
 	
@@ -205,7 +205,7 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 				addGameObject(virusRanged, xE, 800);
 			}
 			else if(Enemie == 2) {
-				security = new Security_Normal(xE, 800, 1, this);
+				security = new Security_Normal(xE, 800, this);
 				addGameObject(security, xE, 800);
 			}
 			else if(Enemie == 3) {
@@ -223,4 +223,39 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 			System.out.println(huidigLevel);
 		}
 	}
+	
+	
+	
+//	public void setWallpaper(PImage bgImg) {
+//		//Zet de meegegeven PImage als achtergrond mits deze voldoet aan de eisen.
+//		if(imageIsWorldSize(bgImg)) {
+//			this.view.setBackground(bgImg);
+//		} else {
+//			this.view.setBackground(255, 0, 0);
+//		}
+//	}
+//	
+//	///		TJ 27-3 EDIT
+//	///		ImageIsWorldSize van public method naar private gezet.
+//	private boolean imageIsWorldSize(PImage img) {
+//		return (img.width == this.worldWidth && img.height == this.worldHeight);
+//	}
+//	
+//	public PImage stretchWallpaper(String url) {
+//		//Laad de afbeelding in baseImg.
+//		PImage baseImage = loadImage(url);
+//		
+//		//Maak een nieuwe PImage en plak de data uit de ingelade afbeelding er overheen.
+//		PImage stretchedImg = createImage(worldWidth, worldHeight, ARGB);
+//		stretchedImg.copy(baseImage,0,0,3840,2160,0,0,worldWidth,worldHeight);
+//		
+//		
+//		//Geef de nieuwe PImage terug.
+//		return stretchedImg;
+//	}
+	
+	
+	
+	
+	
 }
