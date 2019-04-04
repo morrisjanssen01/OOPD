@@ -9,6 +9,7 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 	private int richting;
 	private float speed = 1;
 	private int Punt1;
+	@SuppressWarnings("unused")
 	private int Punt2;
 	private Alarm alarm;
 	private Alarm die;

@@ -17,8 +17,6 @@ import java.util.List;
 public class Player extends AnimatedSpriteObject implements ICollidableWithTiles,ICollidableWithGameObjects{
 	final int size = 25;
 	private final HelloMisterPresident world;
-	private int lives = 3;
-	private int jumpHeight;
 	private boolean canJump;
 	public Sound jump;
 	
@@ -28,7 +26,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.world = world;
 		setCurrentFrameIndex(0);
 		setFriction(0.05f);
-		jumpHeight = 200;
 		canJump = true;
 	}
 	
@@ -44,11 +41,11 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			setY(0);
 		}
 		if(getY() >= world.height - size) {
-			setySpeed(0);
-			setY(world.height - size);
+			this.die();
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public void keyPressed(int keyCode, char key) {
 		final int speed = 5;
@@ -81,6 +78,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public void keyReleased(int keyCode, char key) {
 		if(keyCode == world.UP) {
@@ -139,8 +137,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	
 	public void die() {
 		System.out.println("Player dead");
-		world.deleteGameObject(this);
-		lives -= 1;
+		this.setX(0);
+		this.setY(800);
 	}
 	
 	public void gravity(float gravity) {

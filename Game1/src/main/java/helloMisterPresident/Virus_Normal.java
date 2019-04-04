@@ -6,6 +6,7 @@ import nl.han.ica.oopg.alarm.IAlarmListener;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.Sprite;
 
+@SuppressWarnings("unused")
 public class Virus_Normal extends Enemies implements IAlarmListener{
 	private int richting;
 	private float speed = 1;

@@ -4,11 +4,12 @@ import java.util.List;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
-import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.GameObject;
 
 public class Projectiel extends SpriteObject implements ICollidableWithGameObjects {
+	@SuppressWarnings("unused")
 	private float x;
+	@SuppressWarnings("unused")
 	private float y;
 	private float velocity;
 	private int richting;
