@@ -17,6 +17,7 @@ import nl.han.ica.oopg.tile.TileType;
 import nl.han.ica.oopg.view.CenterFollowingViewport;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 @SuppressWarnings("serial")
 public class HelloMisterPresident extends GameEngine implements IAlarmListener{
@@ -35,6 +36,8 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 	private static int HUB = 0;
 	private static int LEVEL = 1;
 	public int huidigLevel = HUB;
+	public int worldWidth = 10240;
+	public int worldHeight = 1024;
 
 	public static void main(String[] args) {
 		String[] processingArgs = {"helloMisterPresident.HelloMisterPresident"};
@@ -52,13 +55,12 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 	
 	public void setupLevel() {
 		
-		int worldWidth = 10240;
-		int worldHeight = 1024;
+
 		int screenWidth = 1024;
 		int screenHeight = 1024;
 		
 		if(huidigLevel == HUB) {
-		createViewWithoutViewport(worldWidth, worldHeight);
+		createViewWithoutViewport(screenWidth, screenHeight);
 		}
 		else if(huidigLevel == LEVEL) {
 		createViewWithViewport(worldWidth, worldHeight, screenWidth, screenHeight, 1);
@@ -79,8 +81,15 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		View view = new View(viewPort, worldWidth, worldHeight);
 		setView(view);
 		size(screenWidth, screenHeight);
-		view.setBackground(loadImage(MEDIA_URL.concat("background-elements-redux/Backgrounds/backgroundCastles.png")));
+		PImage newImage = stretchImage(MEDIA_URL.concat("background-elements-redux/Backgrounds/backgroundCastles.png"));
+		if (imageIsWorldSize(newImage, worldWidth, worldHeight)) {
+		view.setBackground(newImage);
+		}
+		else {
+			view.setBackground(0, 0, 0);
+		}
 	}
+		
 	
 	private void initializeSound() {
 		backgroundMusic = new Sound(this, MEDIA_URL.concat("backgroundMusic.mp3"));
@@ -224,35 +233,26 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		}
 	}
 	
+	public PImage resizeBackground(String url) {
+		PImage afbeelding = loadImage(url);
+		return afbeelding;
+}
 	
 	
-//	public void setWallpaper(PImage bgImg) {
-//		//Zet de meegegeven PImage als achtergrond mits deze voldoet aan de eisen.
-//		if(imageIsWorldSize(bgImg)) {
-//			this.view.setBackground(bgImg);
-//		} else {
-//			this.view.setBackground(255, 0, 0);
-//		}
-//	}
-//	
-//	///		TJ 27-3 EDIT
-//	///		ImageIsWorldSize van public method naar private gezet.
-//	private boolean imageIsWorldSize(PImage img) {
-//		return (img.width == this.worldWidth && img.height == this.worldHeight);
-//	}
-//	
-//	public PImage stretchWallpaper(String url) {
-//		//Laad de afbeelding in baseImg.
-//		PImage baseImage = loadImage(url);
-//		
-//		//Maak een nieuwe PImage en plak de data uit de ingelade afbeelding er overheen.
-//		PImage stretchedImg = createImage(worldWidth, worldHeight, ARGB);
-//		stretchedImg.copy(baseImage,0,0,3840,2160,0,0,worldWidth,worldHeight);
-//		
-//		
-//		//Geef de nieuwe PImage terug.
-//		return stretchedImg;
-//	}
+	private boolean imageIsWorldSize(PImage img, int worldWidth, int worldHeight) {
+		return (img.width == this.worldWidth && img.height == this.worldHeight);
+	}
+		
+	public PImage stretchImage(String url) {
+
+		PImage image = loadImage(url);
+		
+
+		PImage stretchedImg = createImage(worldWidth, worldHeight, ARGB);
+	stretchedImg.copy(image,0,0,3840,2160,0,0,worldWidth,worldHeight);
+		
+		return stretchedImg;
+	}
 	
 	
 	
