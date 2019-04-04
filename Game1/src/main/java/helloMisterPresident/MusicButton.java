@@ -26,13 +26,13 @@ public class MusicButton extends AnimatedSpriteObject implements Button{
 		if(aanUit) {
 			setCurrentFrameIndex(1);
 			aanUit = false;
-			world.getbackgroundMusic().pause();
-			world.getbackgroundMusic().rewind();
+			world.getBackgroundMusic().pause();
+			world.getBackgroundMusic().rewind();
 		}
 		else if(!aanUit) {
 			setCurrentFrameIndex(0);
 			aanUit = true;
-			world.getbackgroundMusic().loop(-1);
+			world.getBackgroundMusic().loop(-1);
 		}
 	}
 	
