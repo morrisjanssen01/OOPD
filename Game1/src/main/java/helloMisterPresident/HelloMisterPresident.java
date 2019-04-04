@@ -1,7 +1,10 @@
 package helloMisterPresident;
 
+import java.util.Random;
+
 import helloMisterPresident.tiles.*;
 import nl.han.ica.oopg.alarm.Alarm;
+import nl.han.ica.oopg.alarm.IAlarmListener;
 import nl.han.ica.oopg.dashboard.Dashboard;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.objects.Sprite;
@@ -15,7 +18,8 @@ import nl.han.ica.oopg.view.CenterFollowingViewport;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
 
-public class HelloMisterPresident extends GameEngine{
+@SuppressWarnings("serial")
+public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 	
 	private Sound backgroundMusic;
 	private TextObject hubText;
@@ -23,7 +27,11 @@ public class HelloMisterPresident extends GameEngine{
 	public MusicButton musicButton;
 	public SoundButton soundButton;
 	private Enemies virus;
+	private Enemies virusRanged;
+	private Enemies security;
+	private Enemies securityRanged;
 	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
+	private Alarm enemieSpawner;
 
 	public static void main(String[] args) {
 		String[] processingArgs = {"helloMisterPresident.HelloMisterPresident"};
@@ -41,6 +49,7 @@ public class HelloMisterPresident extends GameEngine{
 		initializeTileMap();
 		createObjects();
 		createViewWithoutViewport(worldWidth, worldHeight);
+		this.startAlarm();
 	}
 	
 	private void createViewWithoutViewport(int screenWidth, int screenHeight) {
@@ -135,14 +144,35 @@ public class HelloMisterPresident extends GameEngine{
 	}
 	
 	public void startAlarm() {
-		Alarm alarm = new Alarm("Enemy", 10);
-		alarm.addTarget(this);  
+		enemieSpawner = new Alarm("Enemy", 10);
+		enemieSpawner.addTarget(this); 
+		enemieSpawner.start();
 		//TO-DO dit werkend krijgen, zorgen dat er een variatie aan enemies kan spawnen
 	}
 	
 	public void triggerAlarm(String alarmName) {
 		if (alarmName == "Enemy") {
-			addGameObject(virus,500,800 );
+			Random randX = new Random(); 
+			int xE = randX.nextInt(801);
+			Random randE = new Random();
+			int Enemie = randE.nextInt(4);
+			if(Enemie == 0) {
+				virus = new Virus_Normal(xE, 800, 1, this);
+				addGameObject(virus, xE, 800);
+			}
+			else if(Enemie == 1) {
+				virusRanged = new Virus_Ranged(xE, 800, this);
+				addGameObject(virusRanged, xE, 800);
+			}
+			else if(Enemie == 2) {
+				security = new Security_Normal(xE, 800, 1, this);
+				addGameObject(security, xE, 800);
+			}
+			else if(Enemie == 3) {
+				securityRanged = new Security_Ranged(xE, 800, 1, this);
+				addGameObject(securityRanged, xE, 800);
+			}
+			this.startAlarm();
 		}
 	}
 }

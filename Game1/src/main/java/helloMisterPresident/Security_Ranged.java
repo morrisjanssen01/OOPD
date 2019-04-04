@@ -16,8 +16,8 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 	private double schietDelay = 3;
 	
 	
-	public Security_Ranged(int x, int y, Sprite sprite, HelloMisterPresident world) {
-		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/mon2_sprite_base1.png"))); //sprite nog aanpassen
+	public Security_Ranged(int x, int y, int richting, HelloMisterPresident world) {
+		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/Security_Ranged.png")));
 		this.richting = richting;
 		this.Punt1 = (int) this.x;
 		this.Punt2 = this.Punt1 + 100;
@@ -73,7 +73,7 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 			this.die();
 		}
 	}
-
+               
 	@Override
 	public void die() {
 		world.deleteGameObject(this);
