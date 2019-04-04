@@ -155,7 +155,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for(GameObject g : collidedGameObjects) {
 			if(g instanceof Enemies) {
-				if(this.getY() + this.getHeight() < g.getY() && this.getX() - 48 < g.getX() && this.getX() + 48 > g.getX()) {
+				if(this.getY() + this.getHeight() > g.getY() + g.getHeight() && this.getX() - 48 < g.getX() && this.getX() + 48 > g.getX()) {
 					boolean eersteKeer = this.getY() + this.getHeight() > g.getY();
 					boolean tweedeKeer = this.getX() - 48 < g.getX() && this.getX() + 48 > g.getX();
 					System.out.println("1e: " + eersteKeer + " 2e: " + tweedeKeer);

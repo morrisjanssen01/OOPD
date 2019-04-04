@@ -52,7 +52,7 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 	
 	public void setupLevel() {
 		
-		int worldWidth = 10240;
+		int worldWidth = 1024;
 		int worldHeight = 1024;
 		int screenWidth = 1024;
 		int screenHeight = 1024;
@@ -96,8 +96,8 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		addGameObject(musicButton, 0, 0);
 		soundButton = new SoundButton();
 		addGameObject(soundButton, 977, 0);
-		securityRanged = new Security_Ranged(500, 800, 1, this);
-		addGameObject(securityRanged, 500, 800);
+		security = new Virus_Ranged(500, 800, this);
+		addGameObject(security, 500, 800);
 	}
 	
 	
@@ -165,7 +165,7 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 				{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 		};
 		if (huidigLevel == HUB) {
-		tileMap = new TileMap(tileSize, tiles, levelTiles);
+		tileMap = new TileMap(tileSize, tiles, hubTiles);
 		}
 		else if(huidigLevel == LEVEL) {
 			tileMap = new TileMap(tileSize, tiles, levelTiles);
