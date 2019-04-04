@@ -42,16 +42,17 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 		
 	}
 	
-	public void getSchietRichting() {
+	public int getSchietRichting() {
 		if (this.x >= world.getPlayer().getX()) {
 		schietRichting = 1;
 		}
 		else {
 			schietRichting = 0;
 			}
+		return schietRichting;
 	}
 	public void schiet() {
-		getSchietRichting();
+		schietRichting = getSchietRichting();
 		Projectiel projectiel = new Projectiel(this.x,this.y, 4f, schietRichting);
 		world.addGameObject(projectiel,(float)this.x, (float)this.getCenterY());
 	}

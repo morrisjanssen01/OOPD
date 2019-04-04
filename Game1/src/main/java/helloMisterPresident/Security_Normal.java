@@ -25,7 +25,7 @@ public class Security_Normal extends Enemies{
 		if(this.x >= Punt2) {
 			richting = 1;
 		}
-		else if(this.prevX <= Punt1) {
+		else if(this.x <= Punt1) {
 			richting = 0;
 		}
 		if(richting == 0) {
