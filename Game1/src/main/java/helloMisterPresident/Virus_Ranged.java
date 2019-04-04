@@ -16,7 +16,6 @@ public class Virus_Ranged extends Enemies implements IAlarmListener {
 	
 	public Virus_Ranged(int x, int y, HelloMisterPresident world) {
 		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/Virus_Ranged.png")));
-		this.richting = richting;
 		this.Punt1 = (int) this.x;
 		this.Punt2 = this.Punt1 + 100;
 		setCurrentFrameIndex(0);
