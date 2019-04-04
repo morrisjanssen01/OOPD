@@ -20,6 +20,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private boolean canJump;
 	public Sound jump;
 	
+	//Constructor
 	public Player(HelloMisterPresident world) {
 		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/platformChar_idle1.png")), 2);
 		jump = new Sound(world, HelloMisterPresident.MEDIA_URL.concat("jump.mp3"));
@@ -29,6 +30,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		canJump = true;
 	}
 	
+	//Wordt vooral gebruikt om de player onscreen te houden en te laten sterven als hij van het scherm af komt.
 	@Override
 	public void update() {
 		gravity(5.0f);
@@ -45,6 +47,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 	
+	//Controls
 	@SuppressWarnings("static-access")
 	@Override
 	public void keyPressed(int keyCode, char key) {
@@ -78,6 +81,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 	
+	//Voor de jumps.
 	@SuppressWarnings("static-access")
 	@Override
 	public void keyReleased(int keyCode, char key) {
@@ -86,6 +90,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 	
+	//Zorgt voor de collisions met de tiles.
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
 		PVector vector;
@@ -135,16 +140,19 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 	
+	//Reset de x/y van de player.
 	public void die() {
 		System.out.println("Player dead");
 		this.setX(0);
 		this.setY(800);
 	}
 	
+	//Onze eigen geimplementeerde gravity functie.
 	public void gravity(float gravity) {
 		this.setY(this.getY() + gravity);
 	}
-
+	
+	//Zorgt ervoor dat de player sterft als er een collision is met projectiel of een collision van de zijkant met een enemie.
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for(GameObject g : collidedGameObjects) {

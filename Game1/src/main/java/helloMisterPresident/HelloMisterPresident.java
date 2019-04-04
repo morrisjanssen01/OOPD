@@ -49,6 +49,7 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 	createObjects();
 	}
 	
+	//Bepaalt welk van de 2 views er worden gebruikt en maakt deze aan. Bij LEVEL start hij ook de spawner voor de enemies.
 	public void setupLevel() {
 		
 
@@ -64,6 +65,7 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		}
 	}
 	
+	//Een vaststaand scherm
 	private void createViewWithoutViewport(int screenWidth, int screenHeight) {
 		View view = new View(screenWidth, screenHeight);
 		view.setBackground(loadImage(MEDIA_URL.concat("background-elements-redux/Backgrounds/backgroundCastles.png")));
@@ -71,6 +73,7 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		size(screenWidth, screenHeight);
 	}
 	
+	//Een meebewegend scherm met de speler als centraal punt.
 	private void createViewWithViewport(int worldWidth, int worldHeight, int screenWidth, int screenHeight, float zoomFactor) {
 		CenterFollowingViewport viewPort = new CenterFollowingViewport(player, (int) Math.ceil(screenWidth / zoomFactor), (int) Math.ceil(screenHeight / zoomFactor), 0, 0);
 		viewPort.setTolerance(50, 50, 50, 50);
@@ -86,12 +89,13 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		}
 	}
 		
-	
+	//Het starten van de achtergrondmuziek.
 	private void initializeSound() {
 		backgroundMusic = new Sound(this, MEDIA_URL.concat("backgroundMusic.mp3"));
 		backgroundMusic.loop(-1);
 	}
 	
+	//Het maken van alle Objecten.
 	private void createObjects() {
 		player = new Player(this);
 		addGameObject(player, 0, 800);
@@ -101,12 +105,10 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		addGameObject(musicButton, 0, 0);
 		soundButton = new SoundButton();
 		addGameObject(soundButton, 977, 0);
-		security = new Virus_Ranged(500, 800, this);
-		addGameObject(security, 500, 800);
 	}
 	
 	
-	
+	//Het maken van de tilemap voor het level. Ook het initialiseren van de sprites en het maken van de Tile Objecten.
 	private void initializeTileMap() {
 		Sprite topGroundSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile001.png"));
 		Sprite bottomGroundSprite = new Sprite(MEDIA_URL.concat("PNG/Tiles/platformPack_tile004.png"));
@@ -181,20 +183,24 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		levelOvergang();
 	}
 	
+	//returnt backgroundMusic voor de mute knop.
 	public Sound getBackgroundMusic() {
 		return backgroundMusic;
 	}
 	
+	//Returnt de player.
 	public Player getPlayer() {
 		return player;
 	}
 	
+	//Het starten van de Enemie Spawner.
 	public void startAlarm() {
 		enemieSpawner = new Alarm("Enemy", 10);
 		enemieSpawner.addTarget(this); 
 		enemieSpawner.start();
 	}
 	
+	//Deze functie spawnt een random enemie op een random locatie.
 	public void triggerAlarm(String alarmName) {
 		if (alarmName == "Enemy") {
 			Random randX = new Random(); 
@@ -221,6 +227,7 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		}
 	}
 	
+	//De overgang van Hub naar Level.
 	public void levelOvergang() {
 		if(player.getCenterX() >= 1000f && huidigLevel == HUB) {
 			huidigLevel = LEVEL;
@@ -229,16 +236,12 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		}
 	}
 	
-	public PImage resizeBackground(String url) {
-		PImage afbeelding = loadImage(url);
-		return afbeelding;
-}
-	
-	
+	//Returnt true als na het stretchen de image dezelfde grootte heeft als de wereld van level.
 	private boolean imageIsWorldSize(PImage img, int worldWidth, int worldHeight) {
 		return (img.width == this.worldWidth && img.height == this.worldHeight);
 	}
-		
+	
+	//Zorgt ervoor dat de image wordt gestretcht tot de grootte van de wereld van het level.
 	public PImage stretchImage(String url) {
 
 		PImage image = loadImage(url);

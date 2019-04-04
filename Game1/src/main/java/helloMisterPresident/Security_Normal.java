@@ -13,12 +13,14 @@ public class Security_Normal extends Enemies implements IAlarmListener{
 	private HelloMisterPresident world;
 	private Alarm die;
 	
+	//Constructor
 	public Security_Normal(int x, int y, HelloMisterPresident world) {
 		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/Security.png")));
 		setCurrentFrameIndex(0);
 		this.world = world;
 	}
 	
+	//Beweging van de Security.
 	@Override
 	public void beweeg() {
 		if(richting == 1) {
@@ -35,18 +37,21 @@ public class Security_Normal extends Enemies implements IAlarmListener{
 	public void update() {
 		beweeg();
 	}
-
+	
+	//Start het sterf alarm.
 	@Override
 	public void die() {
 		startAlarm();		
 	}
 	
+	//Maak een alarm en start deze.
 	private void startAlarm() {
 		die = new Alarm("die", 0.1);
 		die.addTarget(this);
 		die.start();
 	}
 	
+	//Zorgt voor de animatie en het verwijderen van de enemie.
 	@Override
 	public void triggerAlarm(String alarmName) {
 		if(this.getCurrentFrameIndex()<7) {
@@ -58,6 +63,7 @@ public class Security_Normal extends Enemies implements IAlarmListener{
 		}
 	}
 	
+	//Berekent welke kant de enemie op moet lopen om naar de player te lopen.
 	public void getRichting() {
 		if(world.getPlayer().getX() > this.getX()) {
 			richting = 1;

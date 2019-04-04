@@ -17,7 +17,7 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 	private double schietDelay = 3;
 	private int schietRichting;
 	
-	
+	//Constructor
 	public Security_Ranged(int x, int y, int richting, HelloMisterPresident world) {
 		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/Security_Ranged1.png")));
 		this.richting = richting;
@@ -27,7 +27,8 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 		this.world = world;
 		startSchiet();
 	}
-
+	
+	//Beweging van de securityRanged.
 	@Override
 	public void beweeg() {
 		if(richting == 1) {
@@ -40,24 +41,28 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 		}
 	}
 	
+	//Maakt een projectiel aan
 	public void schiet() {
 		schietRichting = getSchietRichting();
 		Projectiel projectiel = new Projectiel(this.x,this.y, 4f, schietRichting, world);
 		world.addGameObject(projectiel,(float)this.x, (float)this.getCenterY());
 	}
 	
+	//Maakt en start een alarm voor het schieten.
 	public void startSchiet(){
 	alarm = new Alarm("Schieten", schietDelay);
 	alarm.addTarget(this);
 	alarm.start();
 	}
 	
+	//Maakt en start een alarm voor het sterven.
 	public void startAlarm() {
 		die = new Alarm("Die", 0.1);
 		die.addTarget(this);
 		die.start();
 	}
 	
+	//Bevat de trigger voor het schieten en zorgt voor de animatie en het verwijderen van het gameObject met sterven.
 	@Override
 	public void triggerAlarm(String alarmName) {
 		if (alarmName == "Schieten") {
@@ -75,7 +80,8 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 			}
 		}
 	}
-               
+    
+	//Start sterf alarm.
 	@Override
 	public void die() {
 		startAlarm();	
@@ -86,6 +92,7 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 		beweeg();
 	}
 	
+	//Geeft de richting terug van het schieten.
 	public int getSchietRichting() {
 		if(world.getPlayer().getX() > this.getX()) {
 			schietRichting = 1;
@@ -96,6 +103,7 @@ public class Security_Ranged extends Enemies implements IAlarmListener{
 		return schietRichting;
 	}
 	
+	//Het zetten van de richting zodat hij naar de player loopt.
 	public void getRichting() {
 		if(world.getPlayer().getX() > this.getX()) {
 			richting = 1;

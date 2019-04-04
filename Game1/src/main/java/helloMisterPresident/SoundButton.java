@@ -9,6 +9,7 @@ import nl.han.ica.oopg.userinput.IMouseInput;
 public class SoundButton extends AnimatedSpriteObject implements Button{
 	public boolean aanUit;
 	
+	//Constructor
 	SoundButton(){
 		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("SoundButton.png")), 2);
 		this.aanUit = true;
@@ -19,6 +20,7 @@ public class SoundButton extends AnimatedSpriteObject implements Button{
 	public void update() {
 	}
 	
+	//De actie die de button uitvoert als erop wordt geklikt.
 	@Override
 	public void buttonAction(){
 		if(aanUit) {

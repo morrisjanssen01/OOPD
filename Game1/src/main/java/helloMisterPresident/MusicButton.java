@@ -8,6 +8,7 @@ public class MusicButton extends AnimatedSpriteObject implements Button{
 	public boolean aanUit;
 	private final HelloMisterPresident world;
 	
+	//Constructor
 	MusicButton(HelloMisterPresident world){
 		super(new Sprite(HelloMisterPresident.MEDIA_URL.concat("MusicButton.png")), 2);
 		this.aanUit = true;
@@ -20,6 +21,7 @@ public class MusicButton extends AnimatedSpriteObject implements Button{
 		
 	}
 	
+	//De actie die de button uitvoert als er op wordt geklikt.
 	@Override
 	public void buttonAction(){
 		if(aanUit) {

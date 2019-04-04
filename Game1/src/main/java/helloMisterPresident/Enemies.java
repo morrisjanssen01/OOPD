@@ -9,6 +9,7 @@ import nl.han.ica.oopg.objects.Sprite;
 
 public abstract class Enemies extends AnimatedSpriteObject implements ICollidableWithGameObjects{
 
+	//Constructor
 	public Enemies(int x, int y, Sprite sprite) {
 		super((sprite), 8);
 		this.x = x;
@@ -23,6 +24,7 @@ public abstract class Enemies extends AnimatedSpriteObject implements ICollidabl
 		
 	}
 	
+	//Zorgt ervoor dat een Object van type Enemie de functie die() uitvoert op het moment dat er een collision is met de player vanaf boven
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for(GameObject g : collidedGameObjects) {

@@ -15,6 +15,7 @@ public class Virus_Normal extends Enemies implements IAlarmListener{
 	private Alarm die;
 	private HelloMisterPresident world;
 	
+	//Constructor
 	public Virus_Normal(int x, int y, int richting, HelloMisterPresident world) {
 		super(x, y, new Sprite(HelloMisterPresident.MEDIA_URL.concat("PNG/Characters/Virus.png")));
 		this.richting = richting;
@@ -25,6 +26,7 @@ public class Virus_Normal extends Enemies implements IAlarmListener{
 		
 	}
 	
+	//Zorgt voor een bewegingspatroon.
 	@Override
 	public void beweeg() {
 		if(this.x >= Punt2) {
@@ -44,11 +46,13 @@ public class Virus_Normal extends Enemies implements IAlarmListener{
 		
 	}
 	
+	//Start het sterf alarm.
 	@Override
 	public void die() {
 		startAlarm();
 	}
 	
+	//Maak een alarm en start deze.
 	private void startAlarm() {
 		die = new Alarm("die", 0.1);
 		die.addTarget(this);
@@ -59,7 +63,8 @@ public class Virus_Normal extends Enemies implements IAlarmListener{
 	public void update() {
 		beweeg();
 	}
-
+	
+	//Zorgt voor de animatie en het verwijderen van de enemie
 	@Override
 	public void triggerAlarm(String alarmName) {
 		if(this.getCurrentFrameIndex() < 7) {
