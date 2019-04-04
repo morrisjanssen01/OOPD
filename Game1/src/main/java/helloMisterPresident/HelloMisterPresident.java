@@ -24,6 +24,9 @@ public class HelloMisterPresident extends GameEngine{
 	public SoundButton soundButton;
 	private Enemies virus;
 	public static String MEDIA_URL = "src/main/java/gameProject/gameSprites/";
+	private static int HUB = 0;
+	private static int LEVEL = 1;
+	public int huidigLevel = HUB;
 
 	public static void main(String[] args) {
 		String[] processingArgs = {"helloMisterPresident.HelloMisterPresident"};
@@ -33,14 +36,25 @@ public class HelloMisterPresident extends GameEngine{
 	
 	@Override
 	public void setupGame() {
+	setupLevel();
+	initializeSound();
+	initializeTileMap();
+	createObjects();
+	}
+	
+	public void setupLevel() {
 		
 		int worldWidth = 1024;
 		int worldHeight = 1024;
+		int screenWidth = 1024;
+		int screenHeight = 1024;
 		
-		initializeSound();
-		initializeTileMap();
-		createObjects();
+		if(huidigLevel == HUB) {
 		createViewWithoutViewport(worldWidth, worldHeight);
+		}
+		else if(huidigLevel == LEVEL) {
+		createViewWithViewport(worldWidth, worldHeight, screenWidth, screenHeight, 1);
+		}
 	}
 	
 	private void createViewWithoutViewport(int screenWidth, int screenHeight) {
@@ -50,14 +64,14 @@ public class HelloMisterPresident extends GameEngine{
 		size(screenWidth, screenHeight);
 	}
 	
-//	private void createViewWithViewport(int worldWidth, int worldHeight, int screenWidth, int screenHeight, float zoomFactor) {
-//		CenterFollowingViewport viewPort = new CenterFollowingViewport(player, (int) Math.ceil(screenWidth / zoomFactor), (int) Math.ceil(screenHeight / zoomFactor), 0, 0);
-//		viewPort.setTolerance(50, 50, 50, 50);
-//		View view = new View(viewPort, worldWidth, worldHeight);
-//		setView(view);
-//		size(screenWidth, screenHeight);
-//		view.setBackground(loadImage(MEDIA_URL.concat("background-elements-redux/Backgrounds/backgroundCastles.png")));
-//	}
+	private void createViewWithViewport(int worldWidth, int worldHeight, int screenWidth, int screenHeight, float zoomFactor) {
+		CenterFollowingViewport viewPort = new CenterFollowingViewport(player, (int) Math.ceil(screenWidth / zoomFactor), (int) Math.ceil(screenHeight / zoomFactor), 0, 0);
+		viewPort.setTolerance(50, 50, 50, 50);
+		View view = new View(viewPort, worldWidth, worldHeight);
+		setView(view);
+		size(screenWidth, screenHeight);
+		view.setBackground(loadImage(MEDIA_URL.concat("background-elements-redux/Backgrounds/backgroundCastles.png")));
+	}
 	
 	private void initializeSound() {
 		backgroundMusic = new Sound(this, MEDIA_URL.concat("backgroundMusic.mp3"));
@@ -123,7 +137,7 @@ public class HelloMisterPresident extends GameEngine{
 	}
 	@Override
 	public void update() {		
-
+		levelOvergang();
 	}
 	
 	public Sound getbackgroundMusic() {
@@ -135,14 +149,22 @@ public class HelloMisterPresident extends GameEngine{
 	}
 	
 	public void startAlarm() {
-		Alarm alarm = new Alarm("Enemy", 10);
-		alarm.addTarget(this);  
+		//Alarm alarm = new Alarm("Enemy", 10);
+		//alarm.addTarget(this);  
 		//TO-DO dit werkend krijgen, zorgen dat er een variatie aan enemies kan spawnen
 	}
 	
 	public void triggerAlarm(String alarmName) {
 		if (alarmName == "Enemy") {
 			addGameObject(virus,500,800 );
+		}
+	}
+	
+	public void levelOvergang() {
+		if(player.getCenterX() >= 1000f && huidigLevel == HUB) {
+			huidigLevel = LEVEL;
+			setupLevel();
+			System.out.println(huidigLevel);
 		}
 	}
 }

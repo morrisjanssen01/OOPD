@@ -80,6 +80,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 		if(key == ' ') {
 			System.out.println("Spatie!");
+			System.out.println(getCenterX());
+			
 		}
 	}
 	
@@ -142,6 +144,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void die() {
 		System.out.println("Player dead");
 		world.deleteGameObject(this);
+		lives -= 1;
 	}
 	
 	public void gravity(float gravity) {
