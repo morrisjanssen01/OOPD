@@ -147,7 +147,7 @@ public class HelloMisterPresident extends GameEngine implements IAlarmListener{
 		levelOvergang();
 	}
 	
-	public Sound getbackgroundMusic() {
+	public Sound getBackgroundMusic() {
 		return backgroundMusic;
 	}
 	

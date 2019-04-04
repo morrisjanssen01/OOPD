@@ -34,11 +34,11 @@ public class Projectiel extends SpriteObject implements ICollidableWithGameObjec
 
 	@Override
 	public void update() {
-		beweegPijl();
+		beweegProjectiel();
 		
 	}
 
-	public void beweegPijl() {
+	public void beweegProjectiel() {
 		if(richting == 0) {
 			this.x += velocity;
 			}
