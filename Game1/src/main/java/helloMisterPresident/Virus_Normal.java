@@ -58,10 +58,6 @@ public class Virus_Normal extends Enemies implements IAlarmListener {
 		die.start();
 	}
 
-	@Override
-	public void update() {
-		beweeg();
-	}
 
 	// Zorgt voor de animatie en het verwijderen van de enemie
 	@Override

@@ -33,10 +33,7 @@ public class Security_Normal extends Enemies implements IAlarmListener {
 		}
 	}
 
-	@Override
-	public void update() {
-		beweeg();
-	}
+
 
 	// Start het sterf alarm.
 	@Override

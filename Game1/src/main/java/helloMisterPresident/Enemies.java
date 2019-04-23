@@ -22,6 +22,7 @@ public abstract class Enemies extends AnimatedSpriteObject implements ICollidabl
 
 	@Override
 	public void update() {
+		beweeg();
 	}
 
 	// Zorgt ervoor dat een Object van type Enemie de functie die() uitvoert op het
